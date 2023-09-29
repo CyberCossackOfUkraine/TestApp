@@ -16,9 +16,9 @@ public class FinishZone : Zone
 
     public override void EnterZone(Player player)
     {
-        _cubeExploder = new CubeExploder(player.transform, _cubeSize, _cubesInRow, _explosionForce);
+        _cubeExploder = new CubeExploder(_cubeSize, _cubesInRow, _explosionForce);
 
-        _cubeExploder.CreateExplosion();
+        _cubeExploder.CreateExplosion(player.transform);
 
         StartCoroutine(NextLevel(player));
     }

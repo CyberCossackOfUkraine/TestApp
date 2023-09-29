@@ -24,9 +24,12 @@ public class DeathZone : Zone
         
         player.gameObject.SetActive(false);
 
-        _cubeExploder = new CubeExploder(player.transform, _cubeSize, _cubesInRow, _explosionForce);
+        if (_cubeExploder == null)
+        {
+            _cubeExploder = new CubeExploder(_cubeSize, _cubesInRow, _explosionForce);
+        }
 
-        _cubeExploder.CreateExplosion();
+        _cubeExploder.CreateExplosion(player.transform);
 
         StartCoroutine(Restart(player));
 
